@@ -31,14 +31,13 @@ You can find more information about SLURM commands in the [SLURM documentation](
 
 ## Submitting a Job
 
-To submit a job to the HPC2 node, you will need to create a job script. Below is an example of a job script that you can
-use to submit a job to the HPC2 node.
+To submit a job, you can use either the `sbatch` or `srun` command. I have only used `sbatch`, so I will show an example of using this command below.
 
-The file is called `job_script.sh` and contains the following code:
+To submit a job to the HPC2 node, you will need to create a job script. Below is an example of a job script called `job_script.sh`. It contains certain configuration parameters, activates a Conda environment, and runs a Python file:
 
 ```bash
 #!/bin/bash -l
-#SBATCH -J job_name
+#SBATCH -J training_irf_job
 #SBATCH --mem=150G
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:2
@@ -55,9 +54,9 @@ conda activate regression_dl
 python training_irf_models.py
 ```
 
-Comment lines with `SBATCH` are the parameters that you can set for your job. The parameters that you can set are:
+Comment lines with `SBATCH` are the parameters that you can set for your job. The parameters that I've set for this job are:
 
-- `-J job_name`: The name of the job
+- `-J training_irf_job`: The name of the job, which is `training_irf_job` in this case
 - `--mem=150G`: The amount of memory that you want to allocate to the job
 - `--cpus-per-task=4`: The number of CPUs that you want to allocate to the job
 - `--gres=gpu:2`: The number of GPUs that you want to allocate to the job
