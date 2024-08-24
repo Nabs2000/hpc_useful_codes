@@ -1,3 +1,28 @@
+# Creating a Conda Environment
+
+To create and activate a conda environment on the HPC2 node, you can use the following command:
+
+```bash
+module load conda3/4.X
+conda create --name <environment_name> python=3.8
+conda activate <environment_name>
+```
+
+This command will create a conda environment with the name `<environment_name>` and Python version `3.8`. You can replace
+`<environment_name>` with the name of the environment that you want to create.
+
+After you have created the conda environment, you can activate it using the following command:
+
+```bash
+module load conda3/4.X
+conda activate <environment_name>
+```
+
+This command will activate the conda environment with the name `<environment_name>`. You can replace `<environment_name>`
+with the name of the environment that you want to activate.
+
+You can find more information about creating and activating conda environments in the
+[Conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 # Useful SLURM Commands
 
 This is a collection of useful SLURM commands that I have found useful when running jobs on the HPC2 node.
