@@ -106,3 +106,11 @@ To cancel a job that you have submitted to the HPC2 node, you can use the follow
     - `scancel 12345`: This command will cancel the job with the job ID `12345`
 
 You can find more information about this command in the [SLURM documentation](https://slurm.schedmd.com/scancel.html).
+
+## Interactive Sessions
+
+You can start interactive sessions inside a node. There are two common ways:
+
+- `salloc -p <partition> -t <time> -n <num_tasks> -N <num_nodes> --gpus <num_gpus>`: Allocates resources for a particular node and starts an interactive session
+    - NOTE: You will need to use `srun` while in the interactive session to utilize its reosurces
+- `srun -p <partition> -t <time> -n <num_tasks> -N <num_nodes> --gpus <num_gpus> --pty bash`: Runs the bash cmd inside the interactive session with the allocated resources
