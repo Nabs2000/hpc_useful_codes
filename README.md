@@ -78,6 +78,14 @@ sbatch job_script.sh
 This file should be sufficient for our purposes. If you need to add more parameters, you can refer to
 the [SLURM documentation](https://slurm.schedmd.com/sbatch.html).
 
+## HPC Info
+
+To get information about your HPC:
+
+- `sinfo`: This command will show you information about partitions and nodes across your HPC
+    - `squeue -o "%.18u %.10T" | grep RUNNING | awk '{count[$1]++} END {for (user in count) print count[user], user}' | sort -nr`: This command will print out the **users** and the **number of their running jobs** in descending order
+    - `squeue -o "%.18u %.10T %.5C" | awk '$2 == "RUNNING" {cpu[$1] += $3} END {for (user in cpu) print cpu[user], user}' | sort -nr`: This command will print out the **users** and the **amount of cores** they are using in descending order
+    - `sinfo -N -o "%N %c %C %m %G"`: This command will print out the **node name** and its **core information**
 ## Monitoring Jobs
 
 To monitor the jobs that you have submitted to the HPC2 node, you can use the following commands:
